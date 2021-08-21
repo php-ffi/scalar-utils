@@ -1,0 +1,83 @@
+# FFI Scalar Utils
+
+A set of util methods to interact with PHP and C scalar types.
+
+## Requirements
+
+- PHP >= 7.4
+- ext-ffi
+
+## Installation
+
+Library is available as composer repository and can be installed using the 
+following command in a root of your project.
+
+```sh
+$ composer require ffi/scalar-utils
+```
+
+## Usage
+
+### PHP To C Marshalling
+
+```php
+use FFI\Scalar\Type;
+
+Type::int8(42);                 // object CData<int8_t> { cdata: 42 }
+Type::int8Array([1, 2, 3]);     // object CData<int8_t[3]> { cdata: [1, 2, 3] }
+Type::uint8(42);                // object CData<uint8_t> { cdata: 42 }
+Type::uint8Array(]1, 2, 3]);    // object CData<uint8_t[3]> { cdata: [1, 2, 3] }
+
+Type::int16(42);                // object CData<int16_t> { cdata: 42 }
+Type::int16Array([1, 2, 3]);    // object CData<int16_t[3]> { cdata: [1, 2, 3] }
+Type::uint16(42);               // object CData<uint16_t> { cdata: 42 }
+Type::uint16Array([1, 2, 3]);   // object CData<uint16_t[3]> { cdata: [1, 2, 3] }
+
+Type::int32(42);                // object CData<int32_t> { cdata: 42 }
+Type::int32Array([1, 2, 3]);    // object CData<int32_t[3]> { cdata: [1, 2, 3] }
+Type::uint32(42);               // object CData<uint32_t> { cdata: 42 }
+Type::uint32Array([1, 2, 3]);   // object CData<uint32_t[3]> { cdata: [1, 2, 3] }
+
+Type::int64(42);                // object CData<int64_t> { cdata: 42 }
+Type::int64Array([1, 2, 3]);    // object CData<int64_t[3]> { cdata: [1, 2, 3] }
+Type::uint64(42);               // object CData<uint64_t> { cdata: 42 }
+Type::uint64Array([1, 2, 3]);   // object CData<uint64_t[3]> { cdata: [1, 2, 3] }
+
+Type::float(42);                    // object CData<float> { cdata: 42.0 }
+Type::floatArray([1, 2, 3]);        // object CData<float[3]> { cdata: [1.0, 2.0, 3.0] }
+
+Type::double(42);                   // object CData<double> { cdata: 42.0 }
+Type::doubleArray([1, 2, 3]);       // object CData<double[3]> { cdata: [1.0, 2.0, 3.0] }
+
+Type::longDouble(42);               // object CData<long double> { cdata: 42.0 }
+Type::longDoubleArray([1, 2, 3]);   // object CData<long double[3]> { cdata: [1.0, 2.0, 3.0] }
+
+Type::bool(true);                       // object CData<bool> { cdata: true }
+Type::boolArray([true, false, true]);   // object CData<bool[3]> { cdata: [true, false, true] }
+
+Type::char('c');                    // object CData<char> { cdata: 'c' }
+Type::charArray(['a', 'b', 'c']);   // object CData<char[3]> { cdata: ['a', 'b', 'c'] }
+
+Type::string('hi');                 // object CData<char[3]> { cdata: ['h', 'i', '\0'] }
+Type::stringArray(['a', 'b']);      // object CData<char[2][2]> { cdata: [['a' '\0'], ['b', '\0']] }
+
+Type::wideString('hi');             // object CData<wchar_t[3]> { cdata: ['h', 'i', '\0\0'] }
+Type::wideStringArray(['a', 'b']);  // object CData<wchar_t[2][2]> { cdata: [['a' '\0\0'], ['b', '\0\0']] }
+
+// Direct API
+
+Type::create($ffi->type('example'), $value); // object CData<example> { cdata: ... }
+Type::array($ffi->type('example'), [$value]); // object CData<example[1]> { cdata: [ ... ] }
+```
+
+### C To PHP Marshalling
+
+```php
+use FFI\Scalar\Type;
+
+Type::toString($cdata);     // string(x) "..."
+Type::toInt($cdata);        // int(x)
+Type::toFloat($cdata);      // float(x)
+Type::toBool($cdata);       // bool(x)
+Type::toArray($cdata);      // array(...)
+```

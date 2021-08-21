@@ -1,0 +1,35 @@
+{
+    "name": "ffi/scalar-utils",
+    "description": "PHP FFI Scalar Utilities",
+    "license": "MIT",
+    "keywords": ["ffi", "scalar"],
+    "require": {
+        "php": ">=7.4",
+        "ext-ffi": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "FFI\\Scalar\\": "src"
+        }
+    },
+    "require-dev": {
+        "vimeo/psalm": "^4.9",
+        "jetbrains/phpstorm-attributes": "^1.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FFI\\Scalar\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
