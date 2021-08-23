@@ -26,7 +26,7 @@ use FFI\Scalar\Type;
 Type::int8(42);                 // object CData<int8_t> { cdata: 42 }
 Type::int8Array([1, 2, 3]);     // object CData<int8_t[3]> { cdata: [1, 2, 3] }
 Type::uint8(42);                // object CData<uint8_t> { cdata: 42 }
-Type::uint8Array(]1, 2, 3]);    // object CData<uint8_t[3]> { cdata: [1, 2, 3] }
+Type::uint8Array([1, 2, 3]);    // object CData<uint8_t[3]> { cdata: [1, 2, 3] }
 
 Type::int16(42);                // object CData<int16_t> { cdata: 42 }
 Type::int16Array([1, 2, 3]);    // object CData<int16_t[3]> { cdata: [1, 2, 3] }
