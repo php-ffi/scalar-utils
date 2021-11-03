@@ -1,8 +1,22 @@
 {
     "name": "ffi/scalar-utils",
+    "type": "library",
     "description": "PHP FFI Scalar Utilities",
     "license": "MIT",
-    "keywords": ["ffi", "scalar"],
+    "keywords": ["ffi", "scalar", "support", "util", "helpers"],
+    "support": {
+        "source": "https://github.com/php-ffi/scalar-utils",
+        "issues": "https://github.com/php-ffi/scalar-utils/issues",
+        "docs": "https://github.com/php-ffi/scalar-utils/blob/master/README.md"
+    },
+    "authors": [
+        {
+            "name": "Nesmeyanov Kirill",
+            "email": "nesk@xakep.ru",
+            "homepage": "https://serafimarts.ru",
+            "role": "maintainer"
+        }
+    ],
     "require": {
         "php": ">=7.4",
         "ext-ffi": "*"
@@ -14,7 +28,6 @@
     },
     "require-dev": {
         "vimeo/psalm": "^4.9",
-        "jetbrains/phpstorm-attributes": "^1.0",
         "phpunit/phpunit": "^9.0"
     },
     "autoload-dev": {
