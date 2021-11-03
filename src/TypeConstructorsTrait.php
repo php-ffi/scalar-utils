@@ -21,16 +21,6 @@ use FFI\CType;
 trait TypeConstructorsTrait
 {
     /**
-     * @param int $value
-     * @param bool $owned
-     * @return CData
-     */
-    public static function int8(int $value = 0, bool $owned = true): CData
-    {
-        return self::create('int8_t', $value, $owned);
-    }
-
-    /**
      * @param string|CType $type
      * @param mixed $value
      * @param bool $owned
@@ -42,16 +32,6 @@ trait TypeConstructorsTrait
         $instance->cdata = $value;
 
         return $instance;
-    }
-
-    /**
-     * @param int[] $value
-     * @param bool $owned
-     * @return CData
-     */
-    public static function int8Array(iterable $value = [], bool $owned = true): CData
-    {
-        return self::array('int8_t', $value, $owned);
     }
 
     /**
@@ -99,13 +79,153 @@ trait TypeConstructorsTrait
      * @param bool $owned
      * @return CData
      */
+    public static function short(int $value = 0, bool $owned = true): CData
+    {
+        return self::create('short', $value, $owned);
+    }
+
+    /**
+     * @param array<int> $value
+     * @param bool $owned
+     * @return CData
+     */
+    public static function shortArray(iterable $value = [], bool $owned = true): CData
+    {
+        return self::array('short', $value, $owned);
+    }
+
+    /**
+     * @param positive-int|0 $value
+     * @param bool $owned
+     * @return CData
+     */
+    public static function ushort(int $value = 0, bool $owned = true): CData
+    {
+        return self::create('unsigned short', $value, $owned);
+    }
+
+    /**
+     * @param array<positive-int|0> $value
+     * @param bool $owned
+     * @return CData
+     */
+    public static function ushortArray(iterable $value = [], bool $owned = true): CData
+    {
+        return self::array('unsigned short', $value, $owned);
+    }
+
+    /**
+     * @param int $value
+     * @param bool $owned
+     * @return CData
+     */
+    public static function int(int $value = 0, bool $owned = true): CData
+    {
+        return self::create('int', $value, $owned);
+    }
+
+    /**
+     * @param array<int> $value
+     * @param bool $owned
+     * @return CData
+     */
+    public static function intArray(iterable $value = [], bool $owned = true): CData
+    {
+        return self::array('int', $value, $owned);
+    }
+
+    /**
+     * @param positive-int|0 $value
+     * @param bool $owned
+     * @return CData
+     */
+    public static function uint(int $value = 0, bool $owned = true): CData
+    {
+        return self::create('unsigned int', $value, $owned);
+    }
+
+    /**
+     * @param array<positive-int|0> $value
+     * @param bool $owned
+     * @return CData
+     */
+    public static function uintArray(iterable $value = [], bool $owned = true): CData
+    {
+        return self::array('unsigned int', $value, $owned);
+    }
+
+    /**
+     * @param int $value
+     * @param bool $owned
+     * @return CData
+     */
+    public static function long(int $value = 0, bool $owned = true): CData
+    {
+        return self::create('long', $value, $owned);
+    }
+
+    /**
+     * @param array<int> $value
+     * @param bool $owned
+     * @return CData
+     */
+    public static function longArray(iterable $value = [], bool $owned = true): CData
+    {
+        return self::array('long', $value, $owned);
+    }
+
+    /**
+     * @param positive-int|0 $value
+     * @param bool $owned
+     * @return CData
+     */
+    public static function ulong(int $value = 0, bool $owned = true): CData
+    {
+        return self::create('unsigned long', $value, $owned);
+    }
+
+    /**
+     * @param array<positive-int|0> $value
+     * @param bool $owned
+     * @return CData
+     */
+    public static function ulongArray(iterable $value = [], bool $owned = true): CData
+    {
+        return self::array('unsigned long', $value, $owned);
+    }
+
+    /**
+     * @param int $value
+     * @param bool $owned
+     * @return CData
+     */
+    public static function int8(int $value = 0, bool $owned = true): CData
+    {
+        return self::create('int8_t', $value, $owned);
+    }
+
+    /**
+     * @param array<int> $value
+     * @param bool $owned
+     * @return CData
+     */
+    public static function int8Array(iterable $value = [], bool $owned = true): CData
+    {
+        return self::array('int8_t', $value, $owned);
+    }
+
+    /**
+     * @param positive-int|0 $value
+     * @param bool $owned
+     * @return CData
+     */
     public static function uint8(int $value = 0, bool $owned = true): CData
     {
         return self::create('uint8_t', $value, $owned);
     }
 
     /**
-     * @param int[] $value
+     * @param array<positive-int|0> $value
      * @param bool $owned
      * @return CData
      */
@@ -125,7 +245,7 @@ trait TypeConstructorsTrait
     }
 
     /**
-     * @param int[] $value
+     * @param array<int> $value
      * @param bool $owned
      * @return CData
      */
@@ -135,7 +255,7 @@ trait TypeConstructorsTrait
     }
 
     /**
-     * @param int $value
+     * @param positive-int|0 $value
      * @param bool $owned
      * @return CData
      */
@@ -145,7 +265,7 @@ trait TypeConstructorsTrait
     }
 
     /**
-     * @param int[] $value
+     * @param array<positive-int|0> $value
      * @param bool $owned
      * @return CData
      */
@@ -165,7 +285,7 @@ trait TypeConstructorsTrait
     }
 
     /**
-     * @param int[] $value
+     * @param array<int> $value
      * @param bool $owned
      * @return CData
      */
@@ -175,7 +295,7 @@ trait TypeConstructorsTrait
     }
 
     /**
-     * @param int $value
+     * @param positive-int|0 $value
      * @param bool $owned
      * @return CData
      */
@@ -185,7 +305,7 @@ trait TypeConstructorsTrait
     }
 
     /**
-     * @param int[] $value
+     * @param array<positive-int|0> $value
      * @param bool $owned
      * @return CData
      */
@@ -205,7 +325,7 @@ trait TypeConstructorsTrait
     }
 
     /**
-     * @param int[] $value
+     * @param array<int> $value
      * @param bool $owned
      * @return CData
      */
@@ -215,7 +335,7 @@ trait TypeConstructorsTrait
     }
 
     /**
-     * @param int $value
+     * @param positive-int|0 $value
      * @param bool $owned
      * @return CData
      */
@@ -225,7 +345,7 @@ trait TypeConstructorsTrait
     }
 
     /**
-     * @param int[] $value
+     * @param array<positive-int|0> $value
      * @param bool $owned
      * @return CData
      */

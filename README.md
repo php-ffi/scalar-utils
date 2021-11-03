@@ -43,6 +43,21 @@ Type::int64Array([1, 2, 3]);    // object CData<int64_t[3]> { cdata: [1, 2, 3] }
 Type::uint64(42);               // object CData<uint64_t> { cdata: 42 }
 Type::uint64Array([1, 2, 3]);   // object CData<uint64_t[3]> { cdata: [1, 2, 3] }
 
+Type::short(42);                // object CData<signed short int> { cdata: 42 }
+Type::shortArray([1, 2, 3]);    // object CData<signed short int[3]> { cdata: [1, 2, 3] }
+Type::ushort(42);               // object CData<unsigned short int> { cdata: 42 }
+Type::ushortArray([1, 2, 3]);   // object CData<unsigned short int[3]> { cdata: [1, 2, 3] }
+
+Type::int(42);                  // object CData<signed int> { cdata: 42 }
+Type::intArray([1, 2, 3]);      // object CData<signed int[3]> { cdata: [1, 2, 3] }
+Type::uint(42);                 // object CData<unsigned int> { cdata: 42 }
+Type::uintArray([1, 2, 3]);     // object CData<unsigned int[3]> { cdata: [1, 2, 3] }
+
+Type::long(42);                  // object CData<signed long int> { cdata: 42 }
+Type::longArray([1, 2, 3]);      // object CData<signed long int[3]> { cdata: [1, 2, 3] }
+Type::ulong(42);                 // object CData<unsigned long int> { cdata: 42 }
+Type::ulongArray([1, 2, 3]);     // object CData<unsigned long int[3]> { cdata: [1, 2, 3] }
+
 Type::float(42);                    // object CData<float> { cdata: 42.0 }
 Type::floatArray([1, 2, 3]);        // object CData<float[3]> { cdata: [1.0, 2.0, 3.0] }
 
@@ -65,7 +80,6 @@ Type::wideString('hi');             // object CData<wchar_t[3]> { cdata: ['h', '
 Type::wideStringArray(['a', 'b']);  // object CData<wchar_t[2][2]> { cdata: [['a' '\0\0'], ['b', '\0\0']] }
 
 // Direct API
-
 Type::create($ffi->type('example'), $value); // object CData<example> { cdata: ... }
 Type::array($ffi->type('example'), [$value]); // object CData<example[1]> { cdata: [ ... ] }
 ```
@@ -76,6 +90,7 @@ Type::array($ffi->type('example'), [$value]); // object CData<example[1]> { cdat
 use FFI\Scalar\Type;
 
 Type::toString($cdata);     // string(x) "..."
+Type::toWideString($cdata); // string(x) "..."
 Type::toInt($cdata);        // int(x)
 Type::toFloat($cdata);      // float(x)
 Type::toBool($cdata);       // bool(x)
