@@ -19,7 +19,8 @@
     ],
     "require": {
         "php": ">=7.4",
-        "ext-ffi": "*"
+        "ext-ffi": "*",
+        "ext-mbstring": "*"
     },
     "autoload": {
         "psr-4": {

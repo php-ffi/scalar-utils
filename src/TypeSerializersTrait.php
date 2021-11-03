@@ -20,12 +20,72 @@ use FFI\CData;
 trait TypeSerializersTrait
 {
     /**
-     * @param CData $cdata
+     * @param CData|\ArrayAccess $cdata
+     * @param positive-int|null $size
      * @return string
      */
-    public static function toString(CData $cdata): string
+    public static function toWideString($cdata, int $size = null): string
     {
-        return \FFI::string(\FFI::cast('char*', $cdata));
+        [$i, $result] = [0, ''];
+
+        if ($size !== null) {
+            for ($i = 0; $i < $size; ++$i) {
+                $char = $cdata[$i];
+                $result .= \is_int($char) ? \mb_chr($char) : $char;
+            }
+
+            return $result;
+        }
+
+        do {
+            $char = $cdata[$i];
+
+            if ($char === 0 || $char === "\0") {
+                return $result;
+            }
+
+            $result .= \is_int($char) ? \mb_chr($char) : $char;
+        } while (++$i);
+
+        return $result;
+    }
+
+
+    /**
+     * @param CData|\ArrayAccess $cdata
+     * @param positive-int|null $size
+     * @return string
+     */
+    public static function toString($cdata, int $size = null): string
+    {
+        assert($size === null || $size > 0, 'Size value must be greater that 0');
+
+        if ($cdata instanceof CData) {
+            return \FFI::string(\FFI::cast('char*', $cdata), $size);
+        }
+
+        [$i, $result] = [0, ''];
+
+        if ($size !== null) {
+            for ($i = 0; $i < $size; ++$i) {
+                $char = $cdata[$i];
+                $result .= \is_int($char) ? \chr($char) : $char;
+            }
+
+            return $result;
+        }
+
+        do {
+            $char = $cdata[$i];
+
+            if ($char === 0 || $char === "\0") {
+                return $result;
+            }
+
+            $result .= \is_int($char) ? \chr($char) : $char;
+        } while (++$i);
+
+        return $result;
     }
 
     /**
@@ -56,12 +116,14 @@ trait TypeSerializersTrait
     }
 
     /**
-     * @param CData $array
+     * @param CData|iterable $array
      * @param positive-int|null $size
      * @return array
      */
-    public static function toArray(CData $array, int $size = null): array
+    public static function toArray($array, int $size = null): array
     {
+        assert($size === null || $size > 0, 'Size value must be greater that 0');
+
         $data = [];
 
         if ($size === null) {
